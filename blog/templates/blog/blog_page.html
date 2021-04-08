@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+
+<div>This is a post</div>
+<article>
+  {% for block in page.body %}
+  {% if block.block_type == 'heading' %}
+  <h1>{{ block.value }}</h1>
+  {% else %}
+  <section class="block-{{ block.block_type }}">
+    BLock: {{block.block_type}}
+  </section>
+  {% endif %}
+  {% endfor %}
+</article>
+
+{% endblock content %}
