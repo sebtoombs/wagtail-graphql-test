@@ -35,3 +35,31 @@ See: `api/schema.py ln 29`
 5. Create super user
 6. Start server
 7. Add a BlogPage with some sample data via the admin
+
+## Use
+
+### 1. GraphIQL
+
+To test out the graphql response, open up the graphql playground: http://localhost:8000
+
+### 2. Sample Query
+
+The following query should return some `body` for the posts, but is empty.
+
+```graphql
+query articles {
+  articles {
+    id
+    title
+    intro
+    body {
+      ... on ParagraphBlock {
+        value
+      }
+      ... on HeadingBlock {
+        value
+      }
+    }
+  }
+}
+```
